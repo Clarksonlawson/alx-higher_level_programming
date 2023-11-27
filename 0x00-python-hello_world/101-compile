@@ -1,0 +1,6 @@
+#!/bin/bash
+
+output_file="${PYFILE%.py}.pyc"
+
+echo "Compiling $PYFILE ..."
+python3 -c "import compileall, subprocess; compileall.compile_file('main.py', force=True); subprocess.run(['mv', '__pycache__/main.cpython-*.pyc', './main.pyc'])"
