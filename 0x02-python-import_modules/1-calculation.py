@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-import sys
+from calculator_1 import add, sub, mul, div
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    num = len(args)
+    a = 10
+    b = 5
 
-    if num == 0:
-        print("0 arguments.")
-    else:
-        p = "s" if num > 1 else ""
-        print("{:d} argument{:s}:".format(num, p))
+    result_add = add(a, b)
+    result_sub = sub(a, b)
+    result_mul = mul(a, b)
+    result_div = div(a, b)
 
-        for i, arg in enumerate(args, start=1):
-            print("{:d}: {}".format(i, arg))
+    print("{:d} + {:d} = {:d}".format(a, b, result_add))
+    print("{:d} - {:d} = {:d}".format(a, b, result_sub))
+    print("{:d} * {:d} = {:d}".format(a, b, result_mul))
+    print("{:d} / {:d} = {:d}".format(a, b, result_div))
