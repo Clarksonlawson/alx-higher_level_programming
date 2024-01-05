@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+"""
+Module: 1-answer
+"""
+
+def variable_identifier(variable):
+    """
+    Returns the memory address (identifier) of a variable in CPython implementation.
+    
+    Args:
+    variable: Any Python variable
+    
+    Returns:
+    The memory address (identifier) of the variable
+    """
+    return id(variable)
