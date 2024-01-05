@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+"""
+Module: 0-answer
+"""
+
+def object_type(obj):
+    """
+    Returns the type of the given object.
+    
+    Args:
+    obj: Any Python object
+    
+    Returns:
+    The type of the object
+    """
+    return type(obj).__name__
