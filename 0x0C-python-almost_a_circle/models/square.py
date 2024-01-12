@@ -46,3 +46,12 @@ class Square(Rectangle):
             "x": self.x,
             "y": self.y
         }
+
+    def to_csv_dict(self):
+        """Return a dictionary representation suitable for CSV serialization."""
+        return {'id': self.id, 'size': self.width, 'x': self.x, 'y': self.y}
+
+    @classmethod
+    def from_csv_row(cls, row):
+        """Create an instance from a CSV row."""
+        return {'id': int(row[0]), 'size': int(row[1]), 'x': int(row[2]), 'y': int(row[3])}

@@ -110,4 +110,12 @@ class Rectangle(Base):
             "x": self.x,
             "y": self.y
         }
+    def to_csv_dict(self):
+        """Return a dictionary representation suitable for CSV serialization."""
+        return {'id': self.id, 'width': self.width, 'height': self.height, 'x': self.x, 'y': self.y}
+
+    @classmethod
+    def from_csv_row(cls, row):
+        """Create an instance from a CSV row."""
+        return {'id': int(row[0]), 'width': int(row[1]), 'height': int(row[2]), 'x': int(row[3]), 'y': int(row[4])}
 

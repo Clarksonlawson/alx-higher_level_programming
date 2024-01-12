@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import json
+import csv
+
 class Base:
     """Base class for the project."""
 
@@ -70,6 +72,28 @@ class Base:
         try:
             with open(filename, 'r') as file:
                 data = cls.from_json_string(file.read())
+                instances = [cls.create(**d) for d in data]
+                return instances
+        except FileNotFoundError:
+            return []
+    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize and save instances to a CSV file."""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
+                writer.writerow(obj.to_csv_dict().values())
+    
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize and load instances from a CSV file."""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r') as file:
+                reader = csv.reader(file)
+                data = [cls.from_csv_row(row) for row in reader]
                 instances = [cls.create(**d) for d in data]
                 return instances
         except FileNotFoundError:
