@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json
 import csv
-
+import turtle
 class Base:
     """Base class for the project."""
 
@@ -98,3 +98,29 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+    
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.title("Drawing Rectangles and Squares")
+
+        for rect in list_rectangles:
+            turtle.penup()
+            turtle.goto(rect.x, rect.y)
+            turtle.pendown()
+            for _ in range(2):
+                turtle.forward(rect.width)
+                turtle.left(90)
+                turtle.forward(rect.height)
+                turtle.left(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.width)
+                turtle.left(90)
+
+        turtle.done()
+
