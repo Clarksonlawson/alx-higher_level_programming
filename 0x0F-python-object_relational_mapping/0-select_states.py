@@ -1,4 +1,5 @@
-mport MySQLdb
+#!/usr/bin/python3
+import MySQLdb
 import sys
 
 def get_states(username, password, db_name):
