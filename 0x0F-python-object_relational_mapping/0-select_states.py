@@ -5,7 +5,7 @@ import sys
 def get_states(username, password, db_name):
         """Retrieve and display all states from the database."""
             # Connect to MySQL server
-                try:
+                try:    
                             db = MySQLdb.connect(
                                                 host="localhost",
                                                             port=3306,
@@ -30,7 +30,7 @@ def get_states(username, password, db_name):
 
                                                                                                                                                     if __name__ == "__main__":
                                                                                                                                                             # Check if correct number of arguments provided
-                                                                                                                                                                if len(sys.argv) != 4:
+                                                                                                                                                                if len(sys.argv) != 4:                          
                                                                                                                                                                             print("Usage: {} username password database".format(sys.argv[0]))
                                                                                                                                                                                     sys.exit(1)
                                                                                                                                                                                         # Get arguments from command line
