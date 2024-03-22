@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Navigate to your project directory
+
+# Add all changes
+git add .
+
+# Commit with a default message or with a message provided as an argument
+if [ -z "$1" ]; then
+    git commit -m "Auto commit"
+else
+    git commit -m "$1"
+fi
+
+# Push to the remote repository
+git push
+
