@@ -1,37 +1,45 @@
 #!/usr/bin/python3
-"""
-Script that lists all states from the database hbtn_0e_0_usa
-"""
 
 import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    # Connect to MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
-    )
+    # Check if correct number of arguments is provided
+    if len(sys.argv) != 4:
+        print("Usage: {} username password database".format(sys.argv[0]))
+        sys.exit(1)
 
-    # Create a cursor object using cursor() method
+    # Retrieve arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    # Connect to MySQL server
+    try:
+        db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                             passwd=password, db=database, charset="utf8")
+    except MySQLdb.Error as e:
+        print("Error connecting to MySQL database:", e)
+        sys.exit(1)
+
+    # Create a cursor object
     cursor = db.cursor()
 
-    # Execute SQL query to retrieve all states
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    # Execute SQL query to select all states
+    try:
+        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        states = cursor.fetchall()
+    except MySQLdb.Error as e:
+        print("Error executing SQL query:", e)
+        cursor.close()
+        db.close()
+        sys.exit(1)
 
-    # Fetch all the rows using fetchall() method
-    rows = cursor.fetchall()
+    # Display results
+    for state in states:
+        print(state)
 
-    # Print the results
-    for row in rows:
-        print(row)
-
-    # Close the cursor
+    # Close cursor and database connection
     cursor.close()
-
-    # Close the database connection
     db.close()
 
