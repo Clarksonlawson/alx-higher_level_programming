@@ -3,6 +3,7 @@
 import sys
 import MySQLdb
 
+
 def filter_states(username, password, database):
     """Filter and display states with names starting with 'N' from the given database."""
     try:
@@ -12,7 +13,8 @@ def filter_states(username, password, database):
         # Create a cursor object
         cursor = db.cursor()
         # Execute SQL query to select states starting with 'N'
-        cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+        cursor.execute(
+            "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
         states = cursor.fetchall()
         # Display results
         for state in states:
@@ -23,6 +25,7 @@ def filter_states(username, password, database):
         # Close cursor and database connection
         cursor.close()
         db.close()
+
 
 if __name__ == "__main__":
     # Check if correct number of arguments is provided
@@ -37,4 +40,3 @@ if __name__ == "__main__":
 
     # Call the filter_states function
     filter_states(username, password, database)
-

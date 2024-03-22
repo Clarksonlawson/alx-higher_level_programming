@@ -6,6 +6,7 @@ Script that lists all cities from the database hbtn_0e_4_usa.
 import sys
 import MySQLdb
 
+
 def cities_by_state(username, password, database):
     """Connect to the database and retrieve all cities sorted by state."""
     try:
@@ -32,6 +33,7 @@ def cities_by_state(username, password, database):
         cursor.close()
         db.close()
 
+
 if __name__ == "__main__":
     # Check if correct number of arguments is provided
     if len(sys.argv) != 4:
@@ -45,4 +47,3 @@ if __name__ == "__main__":
 
     # Call the cities_by_state function
     cities_by_state(username, password, database)
-

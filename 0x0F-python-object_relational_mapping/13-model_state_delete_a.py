@@ -35,4 +35,3 @@
                                                                                                                      
                                                                                                                          # Close the session
                                                                                                                              session.close()
-                                                                                                                             

@@ -6,6 +6,7 @@ where name matches the argument, safe from MySQL injections.
 import sys
 import MySQLdb
 
+
 def safe_filter_states(username, password, database, state_name):
     """Filter and display states where name matches the provided argument."""
     try:
@@ -29,10 +30,13 @@ def safe_filter_states(username, password, database, state_name):
         cursor.close()
         db.close()
 
+
 if __name__ == "__main__":
     # Check if correct number of arguments is provided
     if len(sys.argv) != 5:
-        print("Usage: {} username password database state_name".format(sys.argv[0]))
+        print(
+            "Usage: {} username password database state_name".format(
+                sys.argv[0]))
         sys.exit(1)
 
     # Retrieve arguments
@@ -43,4 +47,3 @@ if __name__ == "__main__":
 
     # Call the safe_filter_states function
     safe_filter_states(username, password, database, state_name)
-
